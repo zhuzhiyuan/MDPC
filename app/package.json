@@ -1,0 +1,13 @@
+{
+  "name": "MingDao",
+  "main": "http://localhost:10001",
+  "description": "",
+  "version": "1.0.0",
+  "keywords": [ "mingdao" ],
+  "window": {
+    "icon": "ming.png",
+    "toolbar": true,
+    "width": 429,
+    "height": 440
+  }
+}
