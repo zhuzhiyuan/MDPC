@@ -1,6 +1,7 @@
 {
   "name": "MingDao",
   "main": "index.html",
+  "node-main":"main.js",
   "node-remote":".mingdao.com",
   "url":"http://dev.mingdao.com",
   "config":"",
