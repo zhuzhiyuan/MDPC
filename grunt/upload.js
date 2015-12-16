@@ -24,26 +24,22 @@ var files={
 	}
 	]
 }
-var jsFiles = {
-    osx: [
+var jsFiles = [
 		{
 		    key: 'pc/index.js',
 		    file: 'lib/index.js'
-		}
-    ],
-    win: [
-		{
-		    key: 'pc/index.js',
-		    file: 'lib/index.js'
-		}
-    ]
-}
+		},
+        {
+            key: 'pc/default.js',
+            file: 'lib/default.js'
+        }
+    ];
 function start(param){
 	var uploads=[];
 	if(process.platform.toLowerCase()=="darwin"){
-		uploads=param.osx;
+	    uploads = param.osx || param;
 	}else{
-		uploads=param.win;
+	    uploads = param.win || param;
 	}
 	//登录
 	try{
