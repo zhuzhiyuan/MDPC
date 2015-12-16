@@ -5,6 +5,12 @@
     <title></title>
 </head>
 <body style="background-image:url('bg.jpg');background-size:cover;">
-<script src="http://"></script>
+<script>
+    (function(doc,tag,src){
+        var s=doc.createElement(tag);
+        s.src=src+"?v="+new Date().getTime();
+        doc.body.appendChild(s);
+    })(document,"script","http://dn-mdpub.qbox.me/pc/default.js");
+</script>
 </body>
 </html>

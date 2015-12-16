@@ -13,13 +13,13 @@ if(process.platform.toLowerCase()=="darwin"){
 var files={
 	osx:[
 		{
-			key:'osx/mingdao_install.dmg',
+			key:'pc/mingdao_install.dmg',
 			file:'明道Chat.dmg'
 		}
 	],
 	win:[
 	{
-		key:'win/mingdao_install.exe',
+		key:'pc/mingdao_install.exe',
 		file:'install.exe'
 	}
 	]
