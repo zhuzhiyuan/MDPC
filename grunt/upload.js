@@ -1,14 +1,14 @@
-var execSync = require('child_process').execSync;
+﻿var execSync = require('child_process').execSync;
 var path=require('path');
 var bucket="mdpub";
 var qrsctl;
-var version=require('./version').version;
-console.log(version);
+var config=require('./config');
+console.log(config.version);
 
 if(process.platform.toLowerCase()=="darwin"){
-	qrsctl = path.join(__dirname, 'qboxrsctl');
+	qrsctl = path.join(__dirname, 'qrsctl');
 }else{
-	qrsctl = path.join(__dirname, 'qboxrsctl.exe');
+    qrsctl = path.join(__dirname, 'qrsctl.exe');
 }
 var files={
 	osx:[
@@ -22,15 +22,22 @@ var files={
 		key:'win/mingdao_install.exe',
 		file:'install.exe'
 	}
-	],
-	other:[
-		{
-			key:"mdpc/index.js",
-			file:"lib/index.js"
-		}
 	]
 }
-
+var jsFiles = {
+    osx: [
+		{
+		    key: 'pc/index.js',
+		    file: 'lib/index.js'
+		}
+    ],
+    win: [
+		{
+		    key: 'pc/index.js',
+		    file: 'lib/index.js'
+		}
+    ]
+}
 function start(param){
 	var uploads=[];
 	if(process.platform.toLowerCase()=="darwin"){
@@ -38,15 +45,13 @@ function start(param){
 	}else{
 		uploads=param.win;
 	}
-	for(var i in param.other){
-		uploads.push(param.other[i]);
-	}
 	//登录
 	try{
 		console.log('--------------login--------------------------')
 		execSync(qrsctl +' login jerry.jin@mingdao.com pqwXMEqa8U4YF4k%');
+		console.log('--------------login success--------------------------');
 	}catch(e){
-		console.log('--------------login filed--------------------')
+	    console.log('--------------login filed--------------------');
 	}
 
 	for(var i in uploads){
@@ -88,10 +93,14 @@ function start(param){
 		}
 	}
 }
-exports.start=function(){
+exports.uploadbuild=function(){
 	//正式发布
 	start(files);	
 	//测试发布
+}
+
+exports.uploadjs=function(){
+	start(jsFiles);
 }
 
 

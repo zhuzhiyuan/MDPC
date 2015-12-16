@@ -1,8 +1,6 @@
-var execSync = require('child_process').execSync;
+﻿var execSync = require('child_process').execSync;
 
 module.exports = function(grunt) {
-grunt.file.defaultEncoding = 'utf8';
-grunt.file.preserveBOM = false;
 var APP_BIN="dest";//打包的临时目录
 grunt.initConfig({
           nodewebkit: {
@@ -51,15 +49,6 @@ grunt.initConfig({
                   flatten: true
                 }
               ]
-            },
-            js:{
-              files:[
-                {
-                  src:'dist/index.js',
-                  dest:'package/index.js',
-                  flatten:true
-                }
-              ]
             }
           },
           uglify: {
@@ -70,9 +59,10 @@ grunt.initConfig({
               compress: {
                 drop_console: true
               },
+              report: 'gzip',
               beautify: {
                 width: 80,
-                beautify: true
+                beautify: false
               },
               ASCIIOnly:true
             },
@@ -93,29 +83,38 @@ grunt.initConfig({
 
   grunt.loadNpmTasks('grunt-node-webkit-builder');
   grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-clean');
+
 
   grunt.registerTask('encry', 'encry task.', function() {
     var encry=require('./grunt/encry');
     encry.start(APP_BIN);
   });
 
- 
+  var upload=require('./grunt/upload');
   grunt.registerTask('upload', 'upload task.', function() {
-    var upload=require('./grunt/upload');
-    upload.start();
+    upload.uploadbuild();
   });
 
-  var buildarray=['clean:after','uglify','copy:js','copy:app','encry'];
+  grunt.registerTask('uploadjs','upload index js',function(){
+    upload.uploadjs();
+  });
+
+  var buildarray=['clean:after','copy:app','encry'];
+  var buildafter=[];
   var isMac = process.platform.toLowerCase()=="darwin";
   if(isMac){
     buildarray.push("nodewebkit:osx");
-    buildarray.push("copy:osx");
+    buildafter.push("copy:osx");
   }else{
     buildarray.push("nodewebkit:win");
-    buildarray.push("copy:win");
+    buildafter.push("copy:win");
   }
-  grunt.registerTask('default', buildarray);
+  buildafter.push('clean:after');
+
+  grunt.registerTask('build', buildarray);
+  grunt.registerTask('buildafter', buildafter);
+
+  grunt.registerTask("default",['clean:after','uglify','uploadjs','clean:after']);
 };

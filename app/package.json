@@ -4,7 +4,6 @@
   "node-main":"main.js",
   "node-remote":".mingdao.com",
   "url":"http://dev.mingdao.com",
-  "config":"",
   "description": "",
   "version": "1.0.0",
   "keywords": [ "mingdao" ],

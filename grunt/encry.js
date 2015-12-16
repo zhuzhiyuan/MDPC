@@ -1,4 +1,4 @@
-// 引入文件系统模块fs、文件路径模块path
+﻿// 引入文件系统模块fs、文件路径模块path
 
 var fs = require('fs');
 
@@ -66,14 +66,15 @@ function start(APP_BIN){
         encry(APP_BIN,path.join(APP_BIN,encryList[i]));
     }
 
-    var version=require('./version').version;
+    var config=require('./config');
     console.log('-------------------update package.json----------------------');
 
     var package=APP_BIN+"/package.json";
     var packageStr=fs.readFileSync(package);
     var packageJson=JSON.parse(packageStr);
 
-    packageJson.version=version;
+    packageJson.name=config["name"];
+    packageJson.version=config["version"];
 
     packageJson.window.toolbar=false;
     packageJson.window.resizable=false;
@@ -81,8 +82,9 @@ function start(APP_BIN){
     packageJson.localtion=undefined;
     delete packageJson.localtion;
 
-    packageJson["node-remote"]=".mingdao.com";
-    packageJson["url"]="http://www.mingdao.com";
+    packageJson["node-remote"]=config["node-remote"];
+    packageJson["url"]=config["url"];
+
     if(process.platform.toLowerCase()=="darwin"){
         packageJson.window.icon="ming-mac.png";
     }else{
