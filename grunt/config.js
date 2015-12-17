@@ -11,7 +11,7 @@
 
 module.exports={
         name:"明道",
-        url:"http://www.mingdao.com",
+        url:"https://www.mingdao.com",
         "node-remote":".mingdao.com",
         version:"1.0.0"
     };

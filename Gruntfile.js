@@ -36,7 +36,12 @@ grunt.initConfig({
               files: [
                 {
                   src:'libraries/win32/ffmpegsumo.dll',
-                  dest: 'build/MingDao/win/ffmpegsumo.dll',
+                  dest: 'build/明道/win/ffmpegsumo.dll',
+                  flatten: true
+                },
+                {
+                  src:'chat.ico',
+                  dest: 'build/明道/win/chat.ico',
                   flatten: true
                 }
               ]
@@ -45,7 +50,7 @@ grunt.initConfig({
               files: [
                 {
                   src: 'libraries/osx64/ffmpegsumo.so',
-                  dest: 'build/MingDao/osx/MingDao.app/Contents/Frameworks/nwjs Framework.framework/Libraries/ffmpegsumo.so',
+                  dest: 'build/明道/osx/明道.app/Contents/Frameworks/nwjs Framework.framework/Libraries/ffmpegsumo.so',
                   flatten: true
                 }
               ]
