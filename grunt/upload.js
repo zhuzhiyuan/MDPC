@@ -14,7 +14,7 @@ var files={
 	osx:[
 		{
 			key:'pc/mingdao_install.dmg',
-			file:'明道Chat.dmg'
+			file:'install.dmg'
 		}
 	],
 	win:[
