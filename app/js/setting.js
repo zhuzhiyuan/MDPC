@@ -7,7 +7,7 @@
     var path=require('path');
     var defaultSetting={
         closeIsMin:true,
-        minIsTray:true
+        minIsTray:false
     };
     $("ul.settings li").click(function(){
         var span=$(this).find("span[ablity='"+this.id+"']");
