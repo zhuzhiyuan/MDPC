@@ -1,0 +1,142 @@
+﻿html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset,
+form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer,
+header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video,tool,left
+{margin: 0;padding: 0;border: 0;font-family:Helvetica Neue,Tahoma,Arial,"微软雅黑";color:#333;}
+ol, ul{
+         list-style: none;
+     }
+blockquote:before, blockquote:after, q:before, q:after{
+    content: '';
+    content: none;
+    }
+table{
+    border-collapse: collapse;
+    border-spacing:  0;
+    }
+a{
+    text-decoration: none;
+    cursor: pointer;
+    outline: none;
+}
+button,
+input,
+optgroup,
+select,
+textarea {
+    margin: 0;
+    outline: none;
+    padding:0px 5px;
+    font-family: inherit;
+}
+html {  
+    overflow: hidden; 
+}
+.left{float: left;}
+.right{float: right;}
+.clear{clear:both;}
+.mLeft10{margin-left:10px;}
+.mLeft30{margin-left:30px;}
+.body {  
+    position: fixed;  
+    top: 0;  
+    left: 0;  
+    bottom: 0;  
+    right: 0;  
+    overflow-y: scroll;  
+    overflow-x: hidden; 
+}  
+
+/*滚动条宽度*/  
+::-webkit-scrollbar {  
+    width: 8px;  
+}  
+   
+/* 轨道样式 */  
+::-webkit-scrollbar-track {  
+  
+}  
+   
+/* Handle样式 */  
+::-webkit-scrollbar-thumb {  
+    border-radius: 10px;  
+    background: rgba(0,0,0,0.2);   
+}  
+  
+/*当前窗口未激活的情况下*/  
+::-webkit-scrollbar-thumb:window-inactive {  
+    background: rgba(0,0,0,0.1);   
+}  
+  
+/*hover到滚动条上*/  
+::-webkit-scrollbar-thumb:vertical:hover{  
+    background-color: rgba(0,0,0,0.3);  
+}  
+/*滚动条按下*/  
+::-webkit-scrollbar-thumb:vertical:active{  
+    background-color: rgba(0,0,0,0.7); 
+} 
+.Hidden{display:none;}
+
+button{padding:3px 24px 3px 24px;
+    line-height:100%; font-size: 12px; 
+    border-radius: 5px;text-align: center;border:0px; background-color:#3B99FB;color: #DEE4FA; 
+    background-clip:padding-box;cursor:pointer;}
+
+/*弹出框样式*/
+.alert{
+    width:300px; 
+    height:auto;
+    background-color: #F0F0F0;
+    /*opacity:0.7;filter:alpha(opacity=70); */
+    padding: 18px;
+    font-size: 14px; 
+    overflow: auto;
+    border-radius: 5px; 
+    z-index:99;
+    box-shadow:5px 2px 6px #999;
+    /*-webkit-box-shadow: 0 0 5px #333;*/
+    position:fixed;
+    z-index: 9999;
+}
+.alert .title{color: #000;font-weight: bolder; height:20px;}
+.alert .contact{height:auto;width: 100%; line-height: 40px;color: #000}
+.alert .bottom{height: 22px; float: right; }
+.alert button{padding:3px 24px 3px 24px;line-height:100%; font-size: 12px; border-radius: 5px;text-align: center;border:0px; background-color:#3B99FB;color: #DEE4FA; background-clip:padding-box;cursor:pointer;}
+
+/*网络选择结束*/
+#backup{
+    position: fixed;
+    display: none;
+    text-align: center;
+    background-color: #EFEFEF;
+    right:10px;
+    bottom:100px;
+    width:34px;
+    height:34px;
+    line-height: 30px;
+    border-radius: 17px;
+}
+#backup:hover{
+background-color: #3693FC;
+}
+#backup:hover div{display: block;}
+#backup div{
+    display: none;
+    margin-top:10px;
+    font-size:12px;
+    line-height: 14px;
+    color:#999;
+}
+#loading{
+    position: fixed;
+    left:47%;
+    right:0px;
+    top:0px;
+    bottom:0px;
+    display: none;
+    top:40%;
+    font-size: 12px;
+    vertical-align: middle;
+    text-align: left;
+}

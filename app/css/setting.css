@@ -1,0 +1,115 @@
+﻿.body{
+	background-color: #F2F2F2;
+	padding:25px;
+	font-size: 13px;
+}
+.settings li{
+	float: left;
+	margin-right:30px;
+	margin-bottom:20px;
+}
+
+.checkbox{
+	display: block;
+	background: url('./img/checkbox.png') no-repeat center center;
+	width:14px;
+	height:14px;
+}
+
+.checked{
+	background-image: url('./img/checkbox-check.png');
+}
+
+.check-update,.select-file-btn,.clear-cache,.paste-key,.fontsize,.update-default{
+	background-color:#fff;
+	padding: 4px 15px;
+	color:#333;
+	border-bottom:1px solid #CECECE;
+}
+.paste-key input{
+	width: 100px;
+	height: 20px;
+	border:0;
+}
+.hr{
+	border-bottom:1px solid #C6C6C6;
+	margin:10px 0px;
+}
+.othersetting{
+	padding:20px 0px;
+}
+.table{
+	display: table;
+	width:100%;
+}
+.cell{
+	display: table-cell;
+}
+.cell-left{
+	text-align: right;
+	width:130px;
+
+}
+.cell-right{
+	text-align: left;
+	padding:10px 20px;
+}
+.detaultDownloadPath{position: relative;}
+#txtDownloadPath{
+	border-radius: 5px;
+	border:none;
+	border-bottom: 1px solid #CECECE;
+	height:24px;
+	width: 140px;
+}
+
+.select-file{
+	position: absolute;
+	top:0px;
+	opacity:0;
+	cursor: pointer;
+	width:50px;
+}
+.fontsize{
+	display: inline-block;
+	border-radius: 5px;
+	position: relative;
+	padding-right: 40px;
+}
+
+.fontsize .add,.fontsize .less{
+	display: block;
+	position: absolute;
+	right:0px;
+	width:17px;
+	height:12px;
+	background:#000;
+	overflow: hidden;
+}
+.fontsize .add{
+	top:0px;
+	background: url('./img/arrow-up.png') no-repeat center 4px,-webkit-gradient(linear, 0 0, 0 100%, from(#68B0F9), to(#3696FC));
+	border-top-right-radius: 5px;
+
+}
+.fontsize .less{
+	background: url('./img/arrow-down.png') no-repeat center 1px,-webkit-gradient(linear, 0 0, 0 100%, from(#3696FC), to(#026CFF));
+	bottom:0px;
+	border-bottom-right-radius: 5px;
+}
+
+.paste-key{
+	display: inline-block;
+	border-radius: 5px;
+	position: relative;
+	padding-right: 0px;
+}
+.paste-key .close{
+	display: block;
+	position: absolute;
+	right:5px;
+	top:5px;
+	width:14px;
+	height:14px;
+	background:url('./img/cancel.png') no-repeat center center;
+}

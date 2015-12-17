@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>  
+<html>  
+  <head>  
+    <title>明道</title>
+    <style>
+        html {
+            overflow: hidden;
+        }
+      .about{
+        width:100%;
+        text-align: center;
+        padding:10px 0px;
+        font-size: 12px;
+      }
+      .title{font-weight: bold;font-size: 14px;}
+      .about>div{padding:5px 0px;margin:0px 10px;}
+    </style>
+  </head>  
+  <body>
+  <div class="about">
+    <div><img src="logo.png"/></div>
+     <div class="title">明道</div>
+     <div>版本 
+     <script type="text/javascript">
+        var gui=require('nw.gui');
+        document.write(gui.App.manifest.version)
+     </script>
+     </div>
+     <div>明道－企业社会化协作平台版权所有 2012-2015 沪ICP备14017582号-2</div>
+  </div>
+  </body>
+</html>
