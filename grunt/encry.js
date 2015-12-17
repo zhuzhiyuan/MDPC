@@ -77,7 +77,6 @@ function start(APP_BIN){
     packageJson.version=config["version"];
 
     packageJson.window.toolbar=false;
-    packageJson.window.resizable=false;
 
     packageJson.localtion=undefined;
     delete packageJson.localtion;
