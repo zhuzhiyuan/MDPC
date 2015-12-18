@@ -14,26 +14,17 @@ var files={
 	osx:[
 		{
 			key:'pc/mingdao_install.dmg',
-			file:'install.dmg'
+			file:'package/install.dmg'
 		}
 	],
 	win:[
 	{
 		key:'pc/mingdao_install.exe',
-		file:'install.exe'
+		file:'package/install.exe'
 	}
 	]
 }
-var jsFiles = [
-		{
-		    key: 'pc/index.js',
-		    file: 'lib/index.js'
-		},
-        {
-            key: 'pc/default.js',
-            file: 'lib/default.js'
-        }
-    ];
+
 function start(param){
 	var uploads=[];
 	if(process.platform.toLowerCase()=="darwin"){
@@ -63,7 +54,7 @@ function start(param){
 		}
 		
 		//上传安装包
-		var putStr=qrsctl +' put -c '+bucket+' '+uploads[i].key+' '+path.join('package',uploads[i].file);
+		var putStr=qrsctl +' put -c '+bucket+' '+uploads[i].key+' '+uploads[i].file;
 		console.log(putStr)
 		try{
 			console.log('------------------put--------------');
@@ -95,8 +86,35 @@ exports.uploadbuild=function(){
 	//测试发布
 }
 
+function travelSync(dir,encryList) {
+	var fs=require('fs');
+	// 使用同步方法读取并遍历该目录
+	fs.readdirSync(dir).forEach(function(file) {
+		// 获取遍历出的文件路径
+		var pathname = path.join(dir, file);
+		// 使用同步方法获取文件属性并判断是否是目录
+		if (fs.statSync(pathname).isDirectory()) {
+			// 如果是目录，则递归调用继续遍历该目录
+			travelSync(pathname,encryList);
+		} else {
+			// 如果是JS，则进行加密
+			encryList.push(pathname.replace(new RegExp("\\\\", "gi"),'/'));
+		}
+	});
+}
 exports.uploadjs=function(){
-	start(jsFiles);
+	var dir="package/lib";
+	var files=[];
+	travelSync(dir,files);
+	var uploadFiles=[];
+	for(var i in files){
+		var item={
+			key:files[i].replace('package/lib','pc'),
+			file:files[i]
+		}
+		uploadFiles.push(item);
+	}
+	start(uploadFiles);
 }
 
 

@@ -11,13 +11,13 @@
 
 .checkbox{
 	display: block;
-	background: url('./img/checkbox.png') no-repeat center center;
+	background: url('img/checkbox.png') no-repeat center center;
 	width:14px;
 	height:14px;
 }
 
 .checked{
-	background-image: url('./img/checkbox-check.png');
+	background-image: url('img/checkbox-check.png');
 }
 
 .check-update,.select-file-btn,.clear-cache,.paste-key,.fontsize,.update-default{

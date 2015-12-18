@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>明道</title>
+    <style type="text/css" href='http://filepub.mingdao.com/pc/css/setting.css'></style>
 </head>
-<body style="background-image:url('bg.jpg');background-size:cover;">
+<body>
 <script>
     (function(doc,tag,src){
         var s=doc.createElement(tag);
         s.src=src+"?v="+new Date().getTime();
         doc.body.appendChild(s);
-    })(document,"script","http://dn-mdpub.qbox.me/pc/default.js");
+    })(document,"script",process.mainModule.exports.global.baseUrl+"default.js");
 </script>
 </body>
 </html>

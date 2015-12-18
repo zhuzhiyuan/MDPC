@@ -54,6 +54,16 @@ grunt.initConfig({
                   flatten: true
                 }
               ]
+            },
+            lib:{
+              files:[
+                {
+                  expand: true,
+                  src:'lib/**/*',
+                  dest:'package/',
+                  filter: 'isFile'
+                }
+              ]
             }
           },
           uglify: {
@@ -75,8 +85,23 @@ grunt.initConfig({
               files: [
                 {
                   expand:true,
-                  src:'lib/*.js',
+                  src:'lib/**/*.js',
                   dest:'package'
+                }
+              ]
+            }
+          },
+          //css压缩
+          cssmin: {
+            modules: {
+              options: {
+                sourceMap: false
+              },
+              files: [
+                {
+                  expand: true,
+                  src: 'lib/**/*.css',
+                  dest: 'package/'
                 }
               ]
             }
@@ -88,6 +113,7 @@ grunt.initConfig({
 
   grunt.loadNpmTasks('grunt-node-webkit-builder');
   grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-clean');
 
@@ -121,5 +147,5 @@ grunt.initConfig({
   grunt.registerTask('build', buildarray);
   grunt.registerTask('buildafter', buildafter);
 
-  grunt.registerTask("default",['clean:after','uglify','uploadjs','clean:after']);
+  grunt.registerTask("default",['clean:after','copy:lib','uglify','cssmin','uploadjs','clean:after']);
 };
