@@ -128,8 +128,8 @@ grunt.initConfig({
     upload.uploadbuild();
   });
 
-  grunt.registerTask('uploadjs','upload index js',function(){
-    upload.uploadjs();
+  grunt.registerTask('uploadjs','upload index js',function(file){
+    upload.uploadjs(file);
   });
 
   var buildarray=['clean:after','copy:app','encry'];
@@ -147,5 +147,12 @@ grunt.initConfig({
   grunt.registerTask('build', buildarray);
   grunt.registerTask('buildafter', buildafter);
 
-  grunt.registerTask("default",['clean:after','copy:lib','uglify','cssmin','uploadjs','clean:after']);
+  grunt.registerTask("default",'default',function(file){
+    grunt.task.run(['clean:after','copy:lib','uglify','cssmin']);
+    if(file)
+      grunt.task.run('uploadjs:'+file);
+    else
+      grunt.task.run('uploadjs');
+    grunt.task.run('clean:after');
+  });
 };

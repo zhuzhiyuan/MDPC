@@ -102,17 +102,26 @@ function travelSync(dir,encryList) {
 		}
 	});
 }
-exports.uploadjs=function(){
+exports.uploadjs=function(file){
 	var dir="package/lib";
-	var files=[];
-	travelSync(dir,files);
 	var uploadFiles=[];
-	for(var i in files){
-		var item={
-			key:files[i].replace('package/lib','pc'),
-			file:files[i]
+	if(file){
+		uploadFiles.push({
+			key:'pc/'+file,
+			file:dir+'/'+file
+		});
+	}else{
+		var files=[];
+		travelSync(dir,files);
+
+		for(var i in files){
+			var filename = path.filename(files[i]);
+			var item={
+				key:files[i].replace('package/lib','pc'),
+				file:files[i]
+			}
+			uploadFiles.push(item);
 		}
-		uploadFiles.push(item);
 	}
 	start(uploadFiles);
 }
