@@ -9,7 +9,8 @@
         closeIsMin:true,
         minIsTray:false
     };
-    $("ul.settings li").click(function(){
+    var lis=$("ul.settings li");
+    lis.click(function(){
         var span=$(this).find("span[ablity='"+this.id+"']");
         var val=false;
         var key=span.attr("value");
@@ -23,22 +24,34 @@
     });
     var settingName="setting.json";
     var settingPath=path.join(gui.App.dataPath,settingName);
-    function doSetting(key,val){
-        var fs=require('fs');
-        var setting=null;
+    var fs=require('fs');
+    function getSetting(){
+        var set=null;
         if(fs.existsSync(settingPath)){
             var str=fs.readFileSync(settingPath,"utf8");
             if(str!=null)
                 try{
-                    setting=JSON.parse(str);
+                    set=JSON.parse(str);
                 }catch(e){
-                    setting=null;
+                    set=null;
                 }
         }
-        if(setting==null){
-            setting=defaultSetting;
+        if(set==null){
+            set=defaultSetting;
         }
+        return set;
+    }
+    function doSetting(key,val){
+        var setting=getSetting();
         setting[key]=val;
         fs.writeFileSync(settingPath,JSON.stringify(setting),'utf8');
     }
+    lis.each(function(){
+       var setting=getSetting();
+        for(var key in setting){
+            if(setting[key]&&$(this).find('span[value="'+key+'"]').length){
+                $(this).find('span[value="'+key+'"]').addClass("checked");
+            }
+        }
+    });
 })(document,jQuery);
