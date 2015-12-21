@@ -4,6 +4,7 @@
   "node-main":"main.js",
   "node-remote":".mingdao.com",
   "url":"https://www.mingdao.com",
+  "inject-js-end":"inject.js",
   "description": "",
   "version": "1.0.0",
   "keywords": [ "mingdao" ],

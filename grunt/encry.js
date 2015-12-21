@@ -54,17 +54,17 @@ function encry(APP_BIN,jsfile){
 
 }
 var encryList=[
-    "body.js"
+    "inject.js"
 ];
 var fs = require('fs');
 function start(APP_BIN){
     //console.log('-------------------read file encryList----------------------');
     //travelSync(APP_BIN,encryList);
 
-    //for(var i in encryList)
-    //{
-    //    encry(APP_BIN,path.join(APP_BIN,encryList[i]));
-    //}
+    for(var i in encryList)
+    {
+        encry(APP_BIN,path.join(APP_BIN,encryList[i]));
+    }
 
     var config=require('./config');
     console.log('-------------------update package.json----------------------');
