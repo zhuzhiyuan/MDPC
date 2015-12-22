@@ -113,9 +113,7 @@ exports.uploadjs=function(file){
 	}else{
 		var files=[];
 		travelSync(dir,files);
-
 		for(var i in files){
-			var filename = path.filename(files[i]);
 			var item={
 				key:files[i].replace('package/lib','pc'),
 				file:files[i]
