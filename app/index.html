@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>明道</title>
-    <style type="text/css" href='http://filepub.mingdao.com/pc/css/index.css'></style>
+    <link type="text/css" rel="stylesheet" href='http://filepub.mingdao.com/pc/css/index.css'/>
     <script type="text/javascript" src="http://filepub.mingdao.com/pc/js/jquery.js"></script>
 </head>
 <body>
@@ -12,7 +12,7 @@
     var s=doc.createElement(tag);
     s.src=src+"?v="+new Date().getTime();
     doc.body.appendChild(s);
-})(document,"script",process.mainModule.exports.global.baseUrl+"default.js");
+})(document,"script",process.mainModule.exports.global.baseUrl+"default.js?v="+new Date().getTime());
 </script>
 </body>
 </html>

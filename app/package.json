@@ -10,7 +10,6 @@
   "keywords": [ "mingdao" ],
   "location":true,
   "single-instance":true,
-  "chromium-args":"--enable-threaded-compositing --disable-gpu",
   "window": {
     "icon": "ming.png",
     "toolbar": true,
