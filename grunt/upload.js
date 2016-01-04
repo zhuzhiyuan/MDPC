@@ -124,5 +124,11 @@ exports.uploadjs=function(file){
 	start(uploadFiles);
 }
 
+exports.package=function(){
+	//execSync('codesign -s "3rd Party Mac Developer Application: Shanghai Wanqi Mingdao Software Co., Ltd. (SFADKFPXL2)" --keychain /Users/mingdao/Library/Keychains/login.keychain --deep "build/明道/osx64/明道.app"')
+	execSync('sh macstore_sign.sh "build/明道/osx64/明道.app" "明道" "io.mingdao.nw" "3rd Party Mac Developer Application: Shanghai Wanqi Mingdao Software Co., Ltd. (SFADKFPXL2)" "package"');
+	execSync('productbuild --component package/明道.app /Applications --sign "3rd Party Mac Developer Installer: Shanghai Wanqi Mingdao Software Co., Ltd. (SFADKFPXL2)" package/mingdao_install.pkg');
+}
+
 
  

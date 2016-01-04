@@ -1,8 +1,34 @@
 ﻿var execSync = require('child_process').execSync;
-
+var config=require('./grunt/config');
 module.exports = function(grunt) {
 var APP_BIN="dest";//打包的临时目录
 grunt.initConfig({
+          nwjs: {
+            win:{
+              options: {
+                platforms: ['win'],
+                credits:'credits.html',
+                buildDir: './build', // Where the build version of my NW.js app is saved
+              },
+              src: ['./'+APP_BIN+'/**/*'] // Your NW.js app
+            },
+            osx:{
+              options: {
+                platforms: ['osx'],
+                credits:'credits.html',
+                version:'v0.12.3',
+                //macIcns:'MingDao.icns',
+                macPlist:{
+                  LSApplicationCategoryType:"public.app-category.business",
+                  CFBundleIdentifier:"io.mingdao.nw",
+                  CFBundleVersion:""+new Date().getTime(),
+                  CFBundleShortVersionString:config.version
+                },
+                buildDir: './build', // Where the build version of my NW.js app is saved
+              },
+              src: ['./'+APP_BIN+'/**/*'] // Your NW.js app
+            }
+          },
           nodewebkit: {
             win:{//进行windows的打包
               options: {
@@ -110,16 +136,15 @@ grunt.initConfig({
             after:['dest','v8.log']
           }
     });
-
+  grunt.loadNpmTasks('grunt-nw-builder');
   grunt.loadNpmTasks('grunt-node-webkit-builder');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-clean');
 
-
+  var encry=require('./grunt/encry');
   grunt.registerTask('encry', 'encry task.', function() {
-    var encry=require('./grunt/encry');
     encry.start(APP_BIN);
   });
 
@@ -136,7 +161,7 @@ grunt.initConfig({
   var buildafter=[];
   var isMac = process.platform.toLowerCase()=="darwin";
   if(isMac){
-    buildarray.push("nodewebkit:osx");
+    buildarray.push("nwjs:osx");
     buildafter.push("copy:osx");
   }else{
     buildarray.push("nodewebkit:win");
@@ -146,6 +171,10 @@ grunt.initConfig({
 
   grunt.registerTask('build', buildarray);
   grunt.registerTask('buildafter', buildafter);
+
+  grunt.registerTask("package",function(){
+    upload.package();
+  });
 
   grunt.registerTask("default",'default',function(file){
     grunt.task.run(['clean:after','copy:lib','uglify','cssmin']);
