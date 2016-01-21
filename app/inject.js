@@ -6,7 +6,7 @@ if(typeof(process)!='undefined'){
         var s=doc.createElement(tag);
         s.src=src+"?v="+new Date().getTime();
         doc.body.appendChild(s);
-    })(document,"script",(process.mainModule.exports.global.httpsUrl || process.mainModule.exports.global.baseUrl)+"/sandbox/index.js?v="+new Date().getTime());
+    })(document,"script",(process.mainModule.exports.global.httpsUrl || process.mainModule.exports.global.baseUrl)+"/index.js");
 }
 
 
