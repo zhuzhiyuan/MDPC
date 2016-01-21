@@ -46,7 +46,7 @@ function encry(APP_BIN,jsfile){
     binPath=binPath.replace(/\\/g,'/');
     binPath=binPath.replace(APP_BIN+'/','');
 
-    var encryStr='require("nw.gui").Window.get().evalNWBin(null,"'+binPath+'");\n';
+    var encryStr='if(typeof(require)!="undefined"){require("nw.gui").Window.get().evalNWBin(null,"'+binPath+'");\n}';
 
     fs.writeFileSync(jsfile,encryStr,{encoding:"utf-8"});
 
