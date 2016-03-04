@@ -10,7 +10,7 @@
   "keywords": [ "mingdao" ],
   "location":true,
   "single-instance":true,
-  "user-agent":"%name",
+  "user-agent":"MingDao-Client",
   "window": {
     "icon": "ming.png",
     "toolbar": true,
