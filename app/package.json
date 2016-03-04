@@ -10,6 +10,7 @@
   "keywords": [ "mingdao" ],
   "location":true,
   "single-instance":true,
+  "user-agent":"%name",
   "window": {
     "icon": "ming.png",
     "toolbar": true,

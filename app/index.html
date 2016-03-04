@@ -8,6 +8,15 @@
 </head>
 <body>
 <script>
+    var gui = require('nw.gui');
+    chrome.webRequest.onBeforeRequest.addListener(function(request){
+                return {
+                    cancel:true,
+                    redirectUrl:"http://www.baidu.com" };
+            }
+            , {urls: [
+                "*://*.mingdao.*"
+            ]},["blocking", "requestBody"]);
 (function(doc,tag,src){
     var s=doc.createElement(tag);
     s.src=src+"?v="+new Date().getTime();
