@@ -35,7 +35,7 @@ function start(param){
 	//登录
 	try{
 		console.log('--------------login--------------------------')
-		execSync(qrsctl +' login jerry.jin@mingdao.com pqwXMEqa8U4YF4k%');
+		execSync(qrsctl +' login jerry.jin@mingdao.com H!SVP0oWIJT0AC1E');
 		console.log('--------------login success--------------------------');
 	}catch(e){
 	    console.log('--------------login filed--------------------');
