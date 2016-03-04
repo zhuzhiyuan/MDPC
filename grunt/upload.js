@@ -13,8 +13,8 @@ if(process.platform.toLowerCase()=="darwin"){
 var files={
 	osx:[
 		{
-			key:'pc/mingdao_install.pkg',
-			file:'package/install.pkg'
+			key:'pc/mingdao_install.dmg',
+			file:'package/install.dmg'
 		}
 	],
 	win:[
